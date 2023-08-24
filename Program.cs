@@ -3,7 +3,7 @@
 
 
 AddProduct(1, "Haulikko", 120, 50);
-QueringProducts();
+//QueringProducts();
 
 
 static void QueringProducts()

@@ -2,6 +2,26 @@
 
 
 
+Console.WriteLine("Haluatko lisätä, poistaa vai muokata tuotetietoja");
+string userInput = Console.ReadLine();
+
+if(userInput == "lisätä")
+{
+    Console.WriteLine("Mitä haluat lisätä tuotetietoihin");
+    Console.WriteLine("id, tuotenimi, hinta, varastosaldo");
+    string lisäämisenUserInput = Console.ReadLine();
+    
+}
+if (userInput == "poistaa")
+{
+    Console.WriteLine("Kerro id tuotteesta, minkä haluat poistaa");
+    string poistoUserInput = Console.ReadLine();
+}
+if(userInput == "muokata")
+{
+    Console.WriteLine("Minkä tuotteen tuote tietoja haluaisit muokata. Kerro tuotteen id");
+   string muokkaamisenUserInput = Console.ReadLine();
+}
 
 //AddProduct(1, "Haulikko", 120, 50);
 //ChangeProductName(1, "Kirves");

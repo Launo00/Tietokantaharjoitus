@@ -34,3 +34,25 @@ static bool AddProduct(int newID, string newTuoteNimi, int newHinta, int newVara
     int affected = varastonHallinta.SaveChanges();
     return affected == 1;
 }
+
+static int DeleteProduct(int id)
+{
+    using VarastonHallinta varastonHallinta = new();
+    Tuote ProductDelete = varastonHallinta.Tuotteet.Find(id);
+
+    if(ProductDelete is null)
+    {
+        return 0;
+    }
+    else
+    {
+        varastonHallinta.Remove(ProductDelete);
+        int affected = varastonHallinta?.SaveChanges();
+        return affected;
+    }
+}
+static bool ChangeProductName(string newProductName, int id)
+{
+    using VarastonHallinta varastonHallinta = new();
+    Tuote productUpdate = varastonHallinta.Tuotteet.FirstOrDefault(tuote => tuote.id == id)
+}

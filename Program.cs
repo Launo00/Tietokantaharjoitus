@@ -2,7 +2,10 @@
 
 
 
-AddProduct(1, "Haulikko", 120, 50);
+
+//AddProduct(1, "Haulikko", 120, 50);
+//ChangeProductName(1, "Kirves");
+//DeleteProduct(5);
 //QueringProducts();
 
 
@@ -47,12 +50,23 @@ static int DeleteProduct(int id)
     else
     {
         varastonHallinta.Remove(ProductDelete);
-        int affected = varastonHallinta?.SaveChanges();
+        int affected = varastonHallinta.SaveChanges();
         return affected;
     }
 }
-static bool ChangeProductName(string newProductName, int id)
+static bool ChangeProductName(int id, string newProductName)
 {
     using VarastonHallinta varastonHallinta = new();
-    Tuote productUpdate = varastonHallinta.Tuotteet.FirstOrDefault(tuote => tuote.id == id)
+    Tuote productUpdate = varastonHallinta.Tuotteet.FirstOrDefault(tuote => tuote.id == id);
+    
+    if(productUpdate is null)
+    {
+        return false;
+    }
+    else
+    {
+        productUpdate.tuoteNimi = newProductName;
+        int affected = varastonHallinta.SaveChanges();
+        return affected == 1;
+    }
 }

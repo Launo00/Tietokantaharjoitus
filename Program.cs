@@ -1,27 +1,76 @@
 ﻿using TietokantaHarjoitus;
 
 
+while (true)
+{
+    Console.WriteLine("Haluatko ");
+    Console.WriteLine(" 1 lisätä tuotetietoja ");
+    Console.WriteLine(" 2 poistaa tuotetietoja ");
+    Console.WriteLine(" 3 muokata tuotetietoja ");
+    Console.WriteLine(" 4 Tulostaa tuotelistan ");
+    Console.WriteLine(" 0 Sulkea sovelluksen");
 
-Console.WriteLine("Haluatko lisätä, poistaa vai muokata tuotetietoja");
-string userInput = Console.ReadLine();
+    string userInput = Console.ReadLine();
 
-if(userInput == "lisätä")
-{
-    Console.WriteLine("Mitä haluat lisätä tuotetietoihin");
-    Console.WriteLine("id, tuotenimi, hinta, varastosaldo");
-    string lisäämisenUserInput = Console.ReadLine();
-    
-}
-if (userInput == "poistaa")
-{
-    Console.WriteLine("Kerro id tuotteesta, minkä haluat poistaa");
-    string poistoUserInput = Console.ReadLine();
-}
-if(userInput == "muokata")
-{
-    Console.WriteLine("Minkä tuotteen tuote tietoja haluaisit muokata. Kerro tuotteen id");
-   string muokkaamisenUserInput = Console.ReadLine();
-}
+    switch (userInput)
+    {
+        case "1":
+            Console.WriteLine("Tuote tietojen lisääminen");
+            Console.WriteLine("lisää id");
+            int userId = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Lisää tuoteNimi");
+            string userTuoteNimi = Console.ReadLine();
+
+            Console.WriteLine("Lisää Hinta");
+            int userHinta = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Lisää VarastoSaldo");
+            int userVarastoSaldo = Convert.ToInt32(Console.ReadLine());
+
+
+            AddProduct(userId, userTuoteNimi, userHinta, userVarastoSaldo); 
+
+            Console.WriteLine("Tuote lisätty");
+
+            break;
+
+        case "2":
+            Console.WriteLine("Kerro tuotteen id jonka haluat poistaa");
+            int inputId = Convert.ToInt32(Console.ReadLine());
+
+            DeleteProduct(inputId);
+            Console.WriteLine("Tuote poistettu");
+            break;
+
+
+
+        case "3":
+            Console.WriteLine("Mitä haluasit muokata. kerro id");
+            int userInputId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Kerro tuotteen uusi nimi");
+            string tuotteenUusiNimi = Console.ReadLine();
+
+            ChangeProductName(userInputId, tuotteenUusiNimi);
+            Console.WriteLine("Tuotteen nimi muokattu");
+            break;
+
+
+        case "4":
+            QueringProducts();
+            break;
+
+
+        case "0":
+            Environment.Exit(0);
+            break;
+    }
+} 
+
+
+
+
+
 
 //AddProduct(1, "Haulikko", 120, 50);
 //ChangeProductName(1, "Kirves");
